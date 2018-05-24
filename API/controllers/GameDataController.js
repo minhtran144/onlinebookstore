@@ -83,7 +83,7 @@ function getdemomodel(req,res) {
 
         return  res.json({
                 speech: teamExists.quantity,
-                displayText: 'We have in total '+ teamExists.quantity,
+                displayText: "We have in total" + teamExists.quantity,
                 source: 'Library'
             })
         });

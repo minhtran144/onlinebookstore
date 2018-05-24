@@ -19,7 +19,11 @@ var BookSchema = mongoose.Schema({
   });
   
   var demomodel = mongoose.model('demomodel', BookSchema,'bookstore18');
-  
+
+// The session about the inserting of the new data to the database, this is executed once from the first run.
+// Check the database for the verification
+
+
   var book1 = [{ name: 'Introduction to Mongoose', price: 20, quantity: 25, condition: 'good' },
   
   { name: 'Introduction to Python', price: 10, quantity: 25, condition: 'good' },
@@ -39,5 +43,6 @@ demomodel.collection.insert(book1, function (err, docs) {
     console.log("Multiple documents inserted to Collection");
   }
 });
+
 
 module.exports = demomodel;
