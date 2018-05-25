@@ -4,6 +4,7 @@ var TeamInfo = mongoose.model('TeamInfo');
 var GameSchedule = mongoose.model('GameSchedule');
 var demomodel = mongoose.model('demomodel');
 var bookmodel = mongoose.model('demomodel');
+var bookcondition = mongoose.model ('demomodel');
 
 exports.processRequest = function(req, res) {
     if (req.body.result.action == "schedule") {
@@ -89,6 +90,19 @@ function getbookmodel(req,res) {
     return  res.json({
             speech: "Your requested book has the price of " + bookexists.price,
             displayText: "Your requested book has the price of " + bookexists.price,
+            source: 'Library'
+        })
+    });
+
+};
+
+function getbookcondition(req,res) {
+    
+    bookcondition.findOne({name:bookname},function(err,conditionexists){
+
+    return  res.json({
+            speech: "The book is in " + conditionexist.condition + " condition",
+            displayText: "Your book is in " + conditionexist.condition + " condition",
             source: 'Library'
         })
     });
