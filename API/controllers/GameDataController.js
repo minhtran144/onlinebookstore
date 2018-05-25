@@ -72,8 +72,8 @@ function getdemomodel(req,res) {
         demomodel.findOne({name:bookname},function(err,teamExists){
 
         return  res.json({
-                speech: "We have in total" + teamExists.quantity,
-                displayText: "We have in total" + teamExists.quantity,
+                speech: "We have in total " + teamExists.quantity,
+                displayText: "We have in total " + teamExists.quantity,
                 source: 'Library'
             })
         });
@@ -87,8 +87,8 @@ function getbookmodel(req,res) {
     bookmodel.findOne({name:bookname},function(err,bookexists){
 
     return  res.json({
-            speech: "Your requested book has the price of" + bookexists.quantity,
-            displayText: "Your requested book has the price of" + bookexits.price,
+            speech: "Your requested book has the price of " + bookexists.price,
+            displayText: "Your requested book has the price of " + bookexists.price,
             source: 'Library'
         })
     });
