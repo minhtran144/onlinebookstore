@@ -105,7 +105,7 @@ function getbookcondition(req,res) {
     let conditioncontext = req.body.result.contexts[1];
     let bookname = conditioncontext.bookname;
 
-    bookcondition.findOne({name:bookname},function(err,conditionexists){
+    bookcondition.findOne({name:bookname},function(err,conditionexist){
 
     return  res.json({
             speech: "The book is in " + conditionexist.condition + " condition",
