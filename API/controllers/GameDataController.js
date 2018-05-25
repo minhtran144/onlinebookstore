@@ -92,8 +92,8 @@ function getbookmodel(req,res) {
     bookmodel.findOne({name:bookname},function(err,bookexists){
 
     return  res.json({
-            speech: "Your requested book has the price of " + bookexists.price,
-            displayText: "Your requested book has the price of " + bookexists.price,
+            speech: "Your requested book has the price of " + bookexists.price + "dollars",
+            displayText: "Your requested book has the price of " + bookexists.price + "dollars",
             source: 'Library'
         })
     });
@@ -102,8 +102,8 @@ function getbookmodel(req,res) {
 
 function getbookcondition(req,res) {
     
-    let conditioncontext = req.body.result.contexts[1];
-    let bookname = conditioncontext.bookname;
+    let conditioncontext = req.body.result.contexts[0];
+    let bookname = conditioncontext.parameters.bookname;
 
     bookcondition.findOne({name:bookname},function(err,conditionexist){
 
