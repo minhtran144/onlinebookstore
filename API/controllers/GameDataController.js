@@ -21,7 +21,11 @@ exports.processRequest = function(req, res) {
       else if (req.body.result.action == "book.price")
       {
           getbookmodel(req,res)
-    };
+    }
+      else if (req.body.result.action == "book.condition")
+    {
+        getbookcondition(req,res)
+  };
 
 function getTeamInfo(req,res) {
     let teamToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.team ? req.body.result.parameters.team : 'Unknown';
