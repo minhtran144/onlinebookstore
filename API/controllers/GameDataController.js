@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var TeamInfo = mongoose.model('TeamInfo');
 var GameSchedule = mongoose.model('GameSchedule');
 var demomodel = mongoose.model('demomodel');
+var bookmodel = mongoose.model('demomodel');
 
 exports.processRequest = function(req, res) {
     if (req.body.result.action == "schedule") {
@@ -15,6 +16,10 @@ exports.processRequest = function(req, res) {
       else if (req.body.result.action == "book")
       {
           getdemomodel(req,res)
+      }
+      else if (req.body.result.action == "book.price")
+      {
+          getbookmodel(req,res)
     };
 
 function getTeamInfo(req,res) {
@@ -62,31 +67,32 @@ function getTeamSchedule(req,res){
 
 function getdemomodel(req,res) {
     
-   /* var BookSchema1 = mongoose.Schema({
-        name: String,
-        price: Number,
-        quantity: Number
-      });
-      
-      var Bookie = mongoose.model('Bookie', BookSchema1,'bookstore14');
-      
-      var book1 = new Bookie({ name: 'Introduction to Mongoose (bookstore14)', price: 10, quantity: 25 });
-      
-      book1.save(function (err, bookie) {
-        if (err) return console.error(err);
-        console.log(bookie.name + " saved to bookstore collection.");
-      });
-      */
         let bookname = req.body.result.parameters.bookname;
 
         demomodel.findOne({name:bookname},function(err,teamExists){
 
         return  res.json({
-                speech: teamExists.quantity,
+                speech: "We have in total" + teamExists.quantity,
                 displayText: "We have in total" + teamExists.quantity,
                 source: 'Library'
             })
         });
 
-}
+};
+
+function getbookmodel(req,res) {
+    
+    let bookname = req.body.result.parameters.bookname;
+
+    bookmodel.findOne({name:bookname},function(err,bookexists){
+
+    return  res.json({
+            speech: "Your requested book has the price of" + bookexists.quantity,
+            displayText: "Your requested book has the price of" + bookexits.price,
+            source: 'Library'
+        })
+    });
+
+};
+
 };
