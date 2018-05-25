@@ -102,6 +102,8 @@ function getbookmodel(req,res) {
 
 function getbookcondition(req,res) {
     
+    let bookname = req.body.result.contexts.parameters.bookname;
+
     bookcondition.findOne({name:bookname},function(err,conditionexists){
 
     return  res.json({
